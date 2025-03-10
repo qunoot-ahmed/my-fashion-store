@@ -1,6 +1,7 @@
 import { getProductsByCategory } from '@/app/lib/products';
 import ProductCard from '@/app/components/ProductCard';
 import { notFound } from 'next/navigation';
+import Script from 'next/script';
 
 export function generateStaticParams() {
   return [
@@ -36,6 +37,24 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     <div className="py-12">
       <div className="container">
         <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center">{categoryTitle}</h1>
+        
+        {category === 'men' && (
+          <div className="mb-8 flex justify-center">
+            <iframe 
+              src="https://licencetotest.com/player/3371741f-5d66-4acb-af5c-8b692c6e022b" 
+              title="Zeacon | Embed Video" 
+              width="640px" 
+              height="360px" 
+              allowFullScreen 
+              style={{ border: 0 }}
+            />
+            <Script 
+              id="zeacon-sdk-correlation-manager" 
+              src="https://licencetotest.com/sdk/correlation-manager/bundle.js"
+              strategy="afterInteractive"
+            />
+          </div>
+        )}
         
         {products.length === 0 ? (
           <div className="text-center py-12">
