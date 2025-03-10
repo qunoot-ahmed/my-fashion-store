@@ -2,6 +2,14 @@ import { getProductsByCategory } from '@/app/lib/products';
 import ProductCard from '@/app/components/ProductCard';
 import { notFound } from 'next/navigation';
 
+export function generateStaticParams() {
+  return [
+    { category: 'men' },
+    { category: 'women' },
+    { category: 'kids' },
+  ];
+}
+
 interface CategoryPageProps {
   params: {
     category: string;
